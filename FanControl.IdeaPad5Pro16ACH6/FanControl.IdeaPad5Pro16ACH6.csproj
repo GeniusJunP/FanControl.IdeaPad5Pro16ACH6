@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>FanControl.IdeaPad5Pro16ACH6</AssemblyName>
+    <RootNamespace>FanControl.IdeaPad5Pro16ACH6</RootNamespace>
+    <Version>0.1.0</Version>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <!-- FanControl install folder, for FanControl.Plugins.dll -->
+    <FanControlDir Condition="'$(FanControlDir)' == ''">C:\Program Files (x86)\FanControl</FanControlDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- provided by FanControl at runtime, not shipped -->
+    <Reference Include="FanControl.Plugins">
+      <HintPath>$(FanControlDir)\FanControl.Plugins.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- signed PawnIO module from PawnIO.Modules (LGPL-2.1), see LpcIO.COPYING -->
+    <EmbeddedResource Include="LpcIO.bin" LogicalName="LpcIO.bin" />
+  </ItemGroup>
+
+</Project>
